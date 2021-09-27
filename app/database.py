@@ -17,6 +17,7 @@ Base.query = db_session.query_property()
 def init_db(flask_app: Flask):
     # 在这里导入定义模型所需要的所有模块，这样它们就会正确的注册在
     # 元数据上。否则你就必须在调用 init_db() 之前导入它们。
+    from app.models.timeline import SlideModel, SlideMediaModel, EraModel  # pylint: disable=W0611
     if not database_exists(server_config.SQLALCHEMY_DATABASE_URI):
         create_database(server_config.SQLALCHEMY_DATABASE_URI)
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = server_config.SQLALCHEMY_DATABASE_URI

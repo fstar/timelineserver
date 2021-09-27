@@ -3,7 +3,7 @@
 # pylint: disable=
 # -*- coding: UTF-8 -*-
 
-import logging
+import logging.config
 import os
 import re
 import tarfile

@@ -42,6 +42,8 @@ class PltJSONEncoder(JSONEncoder):
             result = []
             for f in dataclasses.fields(obj):
                 value = self._asdict_inner(getattr(obj, f.name), dict_factory)
+                if getattr(obj, '__filter_none', False) and value is None:
+                    continue
                 result.append((f.name, value))
             return dict_factory(result)
         elif isinstance(obj, tuple) and hasattr(obj, '_fields'):

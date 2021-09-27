@@ -53,10 +53,7 @@ def bind_views(app_builder: AppBuilder):
 def create_app():
     from app.database import init_db
 
-    app = Flask(__name__,
-                # static_folder='./statics',
-                # template_folder='./template'
-               )
+    app = Flask(__name__, static_folder='./statics', template_folder='./template')
     Compress(app)
 
     app._logger = logging.getLogger(__name__)  # pylint: disable=protected-access
